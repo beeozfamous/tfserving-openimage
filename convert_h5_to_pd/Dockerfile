@@ -10,6 +10,10 @@ RUN dpkg -i cuda-keyring_1.0-1_all.deb
 COPY . .
 
 RUN apt-get update
+
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+
 RUN apt-get install wget
 RUN apt-get update
 
