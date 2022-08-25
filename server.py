@@ -46,6 +46,7 @@ def show_preds(input_image):
     # Draw all label
     copy_image = resize_image(image_copy[:, :, ::-1], min_side=600, max_side=800)[0]
     pointx = []
+    print(response)
     for i in range(500):
         point = response.json()['predictions'][0]['out0'][i]
         print(point)
