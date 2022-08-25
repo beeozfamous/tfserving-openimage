@@ -8,9 +8,6 @@ from src.utils import resize_image,preprocess_image, read_image_bgr_fast
 from src.label import ALL_LABELS,COLOR_LIST
 import gradio as gr
 
-image_path = 'bike.jpeg'
-image = np.array(Image.open(image_path))
-
 
 def show_preds(input_image):
     # Read image
