@@ -6,7 +6,10 @@ import numpy as np
 import tensorflow as tf
 from src.utils import resize_image,preprocess_image, read_image_bgr_fast
 from src.label import ALL_LABELS,COLOR_LIST
+from gradio.outputs import Label
+import PIL
 import gradio as gr
+import os
 
 
 def show_preds(input_image):
@@ -38,7 +41,7 @@ def show_preds(input_image):
     # server's properties
     port = 8501
     server_name = 'rentinanet-serving'
-    server_url = 'http://0.0.0.0:{}/v1/model_input/{}:predict'.format(port, server_name)
+    server_url = 'http://0.0.0.0:{}/v1/models/{}:predict'.format(port, server_name)
 
     # Predict
     response = requests.post(server_url, data=data, headers=headers)
@@ -46,7 +49,6 @@ def show_preds(input_image):
     # Draw all label
     copy_image = resize_image(image_copy[:, :, ::-1], min_side=600, max_side=800)[0]
     pointx = []
-    print(response)
     for i in range(500):
         point = response.json()['predictions'][0]['out0'][i]
         print(point)
@@ -66,6 +68,7 @@ def show_preds(input_image):
             break
 
     return copy_image[:, :, ::-1]
+
 if __name__ == "__main__":
 
     gr_interface = gr.Interface(
