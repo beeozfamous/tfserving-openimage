@@ -15,8 +15,8 @@ RUN apt-get update
 RUN wget 'http://storage.googleapis.com/tensorflow-serving-apt/pool/tensorflow-model-server-1.15.0/t/tensorflow-model-server/tensorflow-model-server_1.15.0_all.deb'
 RUN dpkg -i tensorflow-model-server_1.15.0_all.deb
 RUN apt-get install tensorflow-model-server -y
-RUN pip3 install tensorflow-serving-api==1.15 -y
-RUN pip3 install -r requirements.txt -y
+RUN pip3 install tensorflow-serving-api==1.15
+RUN pip3 install -r requirements.txt 
 COPY . .
 
 #ENTRYPOINT ['python3','convert.py']
