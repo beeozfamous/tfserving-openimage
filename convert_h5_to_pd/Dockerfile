@@ -7,6 +7,8 @@ RUN rm /etc/apt/sources.list.d/nvidia-ml.list
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
 RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
+COPY . .
+
 RUN apt-get update
 RUN apt-get install wget
 RUN apt-get update
@@ -16,8 +18,7 @@ RUN wget 'http://storage.googleapis.com/tensorflow-serving-apt/pool/tensorflow-m
 RUN dpkg -i tensorflow-model-server_1.15.0_all.deb
 RUN apt-get install tensorflow-model-server -y
 RUN pip3 install tensorflow-serving-api==1.15
-RUN pip3 install -r requirements.txt 
-COPY . .
+RUN pip3 install -r requirements.txt
 
 #ENTRYPOINT ['python3','convert.py']
 
