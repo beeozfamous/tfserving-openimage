@@ -12,7 +12,7 @@ import gradio as gr
 import os
 
 
-def show_preds(input_image):
+def show_preds(input_image,pro):
     # Read image
     image = np.array(input_image)
     image_copy = image.copy()
@@ -56,7 +56,7 @@ def show_preds(input_image):
 
         label_name = ALL_LABELS[label_number]
         color_code = COLOR_LIST[label_number]
-        if prob > 0.5:
+        if prob >pro:
             copy_image = cv2.rectangle(copy_image, (int(point[0]), int(point[1])), (int(point[2]), int(point[3])),
                                        color_code, 2)
             cv2.putText(copy_image, "{}-{} [{}]".format(label_number, label_name, round(prob, 3)),
@@ -72,7 +72,8 @@ if __name__ == "__main__":
 
     gr_interface = gr.Interface(
         fn=show_preds,
-        inputs=["image"],
+        inputs=["image",gr.inputs.Slider(0.1, 1, step=0.1, label='Top-p', default=0.9)],
+
         outputs=[gr.outputs.Image(type="pil", label="RetinaNet Inference")],
         title="Fridge Object Detector",
         description="A VFNet model that detects common objects found in fridge. Upload an image or click an example image below to use.",
