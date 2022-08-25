@@ -1,6 +1,3 @@
 .DS_store
 /.idea
-/models/*
-!convert_h5_to_pd/model_input/.empty
-!convert_h5_to_pd/model_output/.empty
-!.empty
+
