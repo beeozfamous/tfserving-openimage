@@ -2,6 +2,7 @@
 This repository is contain convert method and serving solution for RetinaNet which trained on Open Images Object Detection Dataset
 ## To convert model from h5 to pd
 - Select and download an pretrain model from [Keras-RetinaNet Pretrained Models List](https://github.com/ZFTurbo/Keras-RetinaNet-for-Open-Images-Challenge-2018/releases)
+- Make sure that the downloaded models is already frozen which is also inference models (retina..._converted.h5)
 - Place it inside ```convert_h5_to_pd/model_input``` 
 - Build docker ```sh builddocker.sh``` to create enviroment for converting task
 - Run ```sh run.sh``` from inside ```convert_h5_to_pd``` to get the converted model in ```model_output```
