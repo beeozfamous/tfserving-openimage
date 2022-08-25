@@ -1,18 +1,12 @@
 import json
 import requests
-import nsvision as nv
 from PIL import Image
 import cv2
 import numpy as np
 import tensorflow as tf
-import random
-import matplotlib.pyplot as plt
-from utils import compute_resize_scale,resize_image,preprocess_image,read_image_bgr,read_image_bgr_fast
-from label import ALL_LABELS,COLOR_LIST
-from gradio.outputs import Label
-import PIL
+from src.utils import resize_image,preprocess_image, read_image_bgr_fast
+from src.label import ALL_LABELS,COLOR_LIST
 import gradio as gr
-import os
 
 image_path = 'bike.jpeg'
 image = np.array(Image.open(image_path))
