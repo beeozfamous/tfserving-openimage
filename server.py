@@ -14,7 +14,6 @@ import os
 
 def show_preds(input_image):
     # Read image
-
     image = np.array(input_image)
     image_copy = image.copy()
     image = read_image_bgr_fast(image)
@@ -79,4 +78,4 @@ if __name__ == "__main__":
         description="A VFNet model that detects common objects found in fridge. Upload an image or click an example image below to use.",
     #     examples=examples,
     )
-    gr_interface.launch(inline=False, share=True, debug=True)
+    gr_interface.launch(inline=False, share=True, debug=True,server_name="0.0.0.0")
