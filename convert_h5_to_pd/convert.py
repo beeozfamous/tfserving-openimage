@@ -9,7 +9,7 @@ import tensorflow as tf
 
 # Change model type and backbone here
 pretrained_model_path = 'model_input/retinanet_resnet101_500_classes_0.4986_converted.h5'
-backbone = 'resnet50'
+backbone = 'resnet101'
 
 export_dir_path = 'model_output/rentinanet-serving/1'
 
